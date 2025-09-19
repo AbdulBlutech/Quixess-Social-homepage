@@ -1,83 +1,110 @@
-import Link from 'next/link';
+import Image from "next/image";
+import { Users, Rocket, Target } from "lucide-react";
+import about from "../../../public/about0.jpg"
+import about1 from "../../../public/about1.jpg"
+import about2 from "../../../public/about2.jpg"
+export const metadata = {
+  title: "About Us | Quixess for Social",
+  description:
+    "Learn more about Quixess for Social — the futuristic social media and e-commerce automation platform.",
+};
 
-export default function About() {
+export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div className="p-8">
-          <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">About Us</h1>
-          
-          <div className="flex justify-center mb-8">
-            <div className="w-24 h-24 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center">
-              <svg 
-                className="w-12 h-12 text-white" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth="2" 
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                ></path>
-              </svg>
-            </div>
+    <div className="max-w-6xl bg-white mx-auto px-6 py-16 space-y-16">
+      {/* Hero Section */}
+      <section className="text-center space-y-6">
+        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
+          About Quixess for Social
+        </h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Quixess for Social is a next-generation platform that blends{" "}
+          <span className="font-semibold text-gray-800">
+            social media
+          </span>{" "}
+          with{" "}
+          <span className="font-semibold text-gray-800">
+            e-commerce automation
+          </span>{" "}
+          to empower creators, brands, and businesses.
+        </p>
+      </section>
+
+      {/* Mission, Vision, Team */}
+      <section className="grid md:grid-cols-3 gap-12">
+        {/* Mission */}
+        <div className="text-center space-y-4">
+          <div className="flex justify-center">
+            <Rocket className="w-12 h-12 text-blue-600" />
           </div>
-          
-          <div className="prose prose-lg mx-auto">
-            <p className="text-gray-600 mb-4">
-              Welcome to our Next.js application! We are a team of passionate developers
-              dedicated to creating amazing web experiences.
-            </p>
-            
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Our Story</h2>
-            
-            <p className="text-gray-600 mb-4">
-              Founded in 2020, our company has been at the forefront of web development,
-              leveraging cutting-edge technologies like Next.js, React, and Tailwind CSS
-              to build performant and beautiful applications.
-            </p>
-            
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Our Mission</h2>
-            
-            <p className="text-gray-600 mb-6">
-              Our mission is to simplify web development while delivering exceptional
-              results for our clients. We believe in the power of modern tools and
-              frameworks to create digital experiences that make a difference.
-            </p>
-            
-            <div className="bg-green-50 rounded-lg p-4 mb-6">
-              <p className="text-green-700 text-sm">
-                <strong>Did you know?</strong> This page is automatically routed by Next.js
-                because it's located in the <code>app/about</code> directory.
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex justify-center mt-8 space-x-4">
-            <Link
-              href="/"
-              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium py-3 px-6 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
-            >
-              Back to Home
-            </Link>
-            <Link
-              href="/contact"
-              className="bg-gradient-to-r from-green-500 to-teal-600 text-white font-medium py-3 px-6 rounded-lg hover:from-green-600 hover:to-teal-700 transition-all duration-300"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-        
-        <div className="bg-gray-50 py-4 px-8 border-t border-gray-100">
-          <p className="text-xs text-gray-500 text-center">
-            © 2023 Next.js App. All rights reserved.
+          <h2 className="text-xl text-blue-600 font-semibold">Our Mission</h2>
+          <p className="text-gray-600">
+            To simplify digital growth by merging automation with human
+            creativity, making e-commerce and social engagement seamless.
           </p>
+          <Image
+            src={about}
+            alt="Mission illustration"
+            width={400}
+            height={250}
+            className="rounded-xl shadow-md mx-auto"
+          />
         </div>
-      </div>
+
+        {/* Vision */}
+        <div className="text-center space-y-4">
+          <div className="flex justify-center">
+            <Target className="w-12 h-12 text-indigo-600" />
+          </div>
+          <h2 className="text-xl text-indigo-600 font-semibold">Our Vision</h2>
+          <p className="text-gray-600">
+            To be the world’s leading futuristic hub where social media and
+            commerce converge effortlessly for everyone.
+          </p>
+          <Image
+            src={about1}
+            alt="Vision illustration"
+            width={400}
+            height={250}
+            className="rounded-xl shadow-md mx-auto"
+          />
+        </div>
+
+        {/* Team */}
+        <div className="text-center space-y-4">
+          <div className="flex justify-center">
+            <Users className="w-12 h-12 text-blue-500" />
+          </div>
+          <h2 className="text-xl text-blue-600 font-semibold">Our Team</h2>
+          <p className="text-gray-600">
+            We are innovators, developers, and creators passionate about
+            building tools that empower people globally.
+          </p>
+          <Image
+            src={about2}
+            alt="Team illustration"
+            width={400}
+            height={250}
+            className="rounded-xl shadow-md mx-auto"
+          />
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="text-center py-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl text-white shadow-lg">
+        <h2 className="text-3xl font-bold mb-4">
+          Join the Future of Social Commerce
+        </h2>
+        <p className="text-lg mb-6">
+          Be part of the beta and experience automation like never before.
+        </p>
+        <a
+          href="/join-beta"
+          className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow hover:bg-gray-100 transition"
+        >
+          Join Beta
+        </a>
+      </section>
     </div>
   );
 }

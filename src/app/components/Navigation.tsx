@@ -7,79 +7,106 @@ import { useState } from 'react';
 export default function Navigation() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/About' },
-  
+    { name: 'About', path: '/about' },
+    { name: 'How It Works', path: '/how-it-works' },
+    { name: 'Demo', path: '/demo' },
+    { name: 'Join Beta', path: '/join-beta' },
   ];
 
   return (
-    <nav className="bg-white shadow-lg">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between">
-          <div className="flex space-x-7">
-            <div className="flex items-center py-4">
-              <Link href="/" className="text-xl font-bold text-gray-800">
-                MySite
-              </Link>
-            </div>
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          
+          {/* Logo / Brand */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/" className="flex items-baseline space-x-1">
+              <span className="text-2xl font-extrabold text-blue-600">
+                Quixess
+              </span>
+              <span className=" text-sm font-medium text-gray-500">
+                for Social
+              </span>
+            </Link>
           </div>
-          <div className="hidden md:flex items-center space-x-3">
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`py-4 px-2 font-semibold transition duration-300 ${
+                className={`relative py-2 px-1 font-medium transition duration-300 ${
                   pathname === item.path
-                    ? 'text-blue-500 border-b-4 border-blue-500'
-                    : 'text-gray-500 hover:text-blue-500'
+                    ? 'text-blue-600 after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-blue-600'
+                    : 'text-gray-600 hover:text-blue-600'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
           </div>
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button 
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="outline-none mobile-menu-button"
+              className="text-gray-600 hover:text-blue-600 focus:outline-none"
             >
-              <svg
-                className="w-6 h-6 text-gray-500"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
+              {isMenuOpen ? (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
-      {/* Mobile menu */}
-      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              href={item.path}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
-                pathname === item.path
-                  ? 'text-blue-500 bg-blue-50'
-                  : 'text-gray-500 hover:text-blue-500 hover:bg-gray-50'
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
+
+      {/* Mobile Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 shadow-sm">
+          <div className="px-4 py-3 space-y-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className={`block rounded-md px-3 py-2 text-base font-medium transition ${
+                  pathname === item.path
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
+                }`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
