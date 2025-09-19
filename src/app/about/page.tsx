@@ -11,7 +11,8 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="max-w-6xl bg-white mx-auto px-6 py-16 space-y-16">
+    <div className=" bg-white mx-auto px-6 py-16 space-y-16">
+      
       {/* Hero Section */}
       <section className="text-center space-y-6">
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
